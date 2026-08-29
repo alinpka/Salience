@@ -9,14 +9,14 @@ OUTPUT_DIR = "/Users/macbookair/Desktop/diss/data"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 stimulus_labels = {
-    "RWNA_exp2_1": "8",
-    "RWNA_exp2_11": "3",
-    "RWNA_exp2_14": "7",
-    "RWNA_exp2_16": "1",
-    "RWNA_exp2_4": "2",
-    "RWNA_exp2_6": "6",
-    "RWNA_exp2_7": "4",
-    "RWNA_exp2_9": "5"
+    "X": "1",
+    "X": "2",
+    "X": "3",
+    "X": "4",
+    "X": "5",
+    "X": "6",
+    "X": "7",
+    "X": "8"
 }
 
 def compute_features(frame, prev_frame=None):
