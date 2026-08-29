@@ -4,8 +4,8 @@ import os
 import csv
 import matplotlib.pyplot as plt
 
-STIMULI_DIR = "/Users/macbookair/Desktop/diss/leftstimuli"
-OUTPUT_DIR = "/Users/macbookair/Desktop/diss/data"
+STIMULI_DIR = "X"
+OUTPUT_DIR = "X"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 stimulus_labels = {
