@@ -92,7 +92,7 @@ with open(csv_path, 'w', newline='') as f:
     writer.writerow(["feature", "stimulus", "affordance", "control"])
     for feat in feature_names:
         for i, label in enumerate(results[feat]["labels"]):
-            writer.writerow([feat, label, results[feat]["affordance"][i], results[feat]["control$
+            writer.writerow([feat, label, results[feat]["affordance"][i], results[feat]["control"] [i])
 print(f"Saved CSV to {csv_path}")
             
 for feat in feature_names:
