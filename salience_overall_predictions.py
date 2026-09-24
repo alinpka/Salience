@@ -46,8 +46,8 @@ def compute_overall_saliency(frame, prev_frame=None):
     kernel_90 = cv2.getGaborKernel((21,21), 4, np.deg2rad(90), 10, 0.5, 0)
     kernel_45 = cv2.getGaborKernel((21,21), 4, np.deg2rad(45), 10, 0.5, 0)
     kernel_135 = cv2.getGaborKernel((21,21), 4, np.deg2rad(135), 10, 0.5, 0)
-    contrast_0_90 = np.abs(cv2.filter2D(gray, cv2.CV_32F, kernel_0)) - np.abs(cv2.filter2D(gray,$
-    contrast_45_135 = np.abs(cv2.filter2D(gray, cv2.CV_32F, kernel_45)) - np.abs(cv2.filter2D(gr$
+    contrast_0_90 = np.abs(cv2.filter2D(gray, cv2.CV_32F, kernel_0)) - np.abs(cv2.filter2D(gray, cv2.CV_32F, kernel_90))
+    contrast_45_135 = np.abs(cv2.filter2D(gray, cv2.CV_32F, kernel_45)) - np.abs(cv2.filter2D(gray, cv2.CV_32F, kernel_135))
     orientation = np.abs(contrast_0_90) + np.abs(contrast_45_135)
     orientation = cv2.normalize(orientation, None, 0, 1, cv2.NORM_MINMAX)
     
@@ -109,7 +109,7 @@ for filename in sorted(os.listdir(STIMULI_DIR)):
         
 csv_path = os.path.join(OUTPUT_DIR, "salience_final_predictions.csv")
 with open(csv_path, 'w', newline='') as f:
-    writer = csv.DictWriter(f, fieldnames=["video", "stimulus_label", "affordance_prediction", "$
+    writer = csv.DictWriter(f, fieldnames=["video", "stimulus_label", "affordance_prediction", "control_prediction"])
     writer.writeheader()
     writer.writerows(results)
 print(f"Saved CSV to {csv_path}")
@@ -129,7 +129,7 @@ for i in range(len(affordance_vals)):
     ax.plot([1, 2], [affordance_vals[i], control_vals[i]],
             color="dimgrey", alpha=0.4, linewidth=1, marker="o", markersize=4,
             linestyle=linestyle)
-value_range = max(max(affordance_vals), max(control_vals)) - min(min(affordance_vals), min(contr$
+value_range = max(max(affordance_vals), max(control_vals)) - min(min(affordance_vals), min(control_vals))
 gap = value_range * 0.02
 sorted_pairs = sorted(zip(control_vals, labels), key=lambda x: x[0])
 used_positions = []
